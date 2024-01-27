@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     TextView tempVal;
     Button btn;
-    RadioGroup opt;1
+    RadioGroup opt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,22 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.optDivision:
                         respuesta = num1/num2;
+                        break;
+                    case R.id.optPorcentaje:
+                        respuesta = (num2/100)*num1;
+                        break;
+                    case R.id.optFactorial:
+                        long factorial = 1;
+                        for (int i = 1; i <= num1; i++) {
+                            factorial *= i;
+                            respuesta = factorial;
+                        }
+                        break;
+                    case R.id.optExponente:
+                        respuesta = Math.pow(num1, num2);
+                        break;
+                    case R.id.optRaiz:
+                        respuesta = Math.pow(num1, 1/num2);
                         break;
                 }
                 tempVal = findViewById(R.id.lblrespuesta);
