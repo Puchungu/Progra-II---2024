@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
     TextView tempVal;
@@ -19,13 +20,37 @@ public class MainActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.btnCalcular);
         btn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                tempVal = findViewById(R.id.txtnum1);
-                double num1 = Double.parseDouble(tempVal.getText().toString());
 
-                tempVal = findViewById(R.id.txtnum2);
-                double num2 = Double.parseDouble(tempVal.getText().toString());
+
+
+               /* tempVal = findViewById(R.id.txtnum1);*/
+               /* double num1 = Double.parseDouble(tempVal.getText().toString()); */
+
+                /*tempVal = findViewById(R.id.txtnum2);*/
+                 /*double num2 = Double.parseDouble(tempVal.getText().toString());*/
+
+                EditText editText1 = findViewById(R.id.txtnum1);
+                EditText editText2 = findViewById(R.id.txtnum2);
+                String num1Str = editText1.getText().toString();
+                String num2Str = editText2.getText().toString();
+
+
+               double num1,num2;
+
+                if (num1Str.isEmpty()) {
+                     num1 = 0; // Asignar 0 si está vacío
+                } else {
+                     num1 = Double.parseDouble(num1Str);
+                }
+
+                if (num2Str.isEmpty()) {
+                     num2 = 0; // Asignar 0 si está vacío
+                } else {
+                     num2 = Double.parseDouble(num2Str);
+                }
 
                 double respuesta = 0;
                 opt = findViewById(R.id.optOpciones);
