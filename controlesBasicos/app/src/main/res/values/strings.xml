@@ -1,3 +1,37 @@
 <resources>
-    <string name="app_name">controlesBasicos</string>
+    <string name="app_name">Conversores</string>
+    <string-array name="spnLongitud">
+        <item>Metros</item>
+        <item>Cm</item>
+        <item>Pulgada</item>
+        <item>Pie</item>
+        <item>Varas</item>
+        <item>Yardas</item>
+        <item>Km</item>
+        <item>Millas</item>
+    </string-array>
+
+    <string-array name="spnMonedas">
+        <item>Dolar</item>
+        <item>Euro</item>
+        <item>Libra Esternila</item>
+        <item>Yen japones</item>
+        <item>Dolar Canadiense</item>
+        <item>Franco Suizo</item>
+        <item>Dolar Australiano</item>
+        <item>Dolar Neozelandes</item>
+        <item>Peso Mexicano</item>
+        <item>Yuan Chino</item>
+    </string-array>
+
+    <string-array name="spnAlmacenamiento">
+        <item>Byte</item>
+        <item>Kilobytes</item>
+        <item>Megabytes</item>
+        <item>Gigabytes</item>
+        <item>Terabytes</item>
+        <item>Petabytes</item>
+        <item>Exabytes</item>
+        <item>Zettabytes</item>
+    </string-array>
 </resources>
