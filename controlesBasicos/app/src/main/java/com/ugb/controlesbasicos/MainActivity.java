@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         tbh = findViewById(R.id.tbhConversores);
         tbh.setup();
-        tbh.addTab(tbh.newTabSpec("LON").setIndicator("LONGITUD", null).setContent(R.id.tabLogitud));
-        tbh.addTab(tbh.newTabSpec("MON").setIndicator("MONEDAS", null).setContent(R.id.tabMonedas));
-        tbh.addTab(tbh.newTabSpec("ALM").setIndicator("ALMACENAMIENTO", null).setContent(R.id.tabAlmacenamiento));
+        tbh.addTab(tbh.newTabSpec("LON").setIndicator("LONGITUD", null).setContent(R.id.Longitud));
+        tbh.addTab(tbh.newTabSpec("MON").setIndicator("MONEDAS", null).setContent(R.id.Divisas));
+        tbh.addTab(tbh.newTabSpec("ALM").setIndicator("ALMACENAMIENTO", null).setContent(R.id.Almacenamiento));
 
         btn = findViewById(R.id.btnCalcularLongitud);
         btn.setOnClickListener(new View.OnClickListener() {

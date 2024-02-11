@@ -27,7 +27,7 @@
                 android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:id="@+id/tabLogitud"
+                    android:id="@+id/Longitud"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -83,7 +83,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/tabMonedas"
+                    android:id="@+id/Divisas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -139,7 +139,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tabAlmacenamiento"
+                    android:id="@+id/Almacenamiento"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
