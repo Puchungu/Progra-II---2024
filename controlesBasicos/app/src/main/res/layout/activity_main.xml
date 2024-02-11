@@ -26,60 +26,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/Longitud"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
                     <TextView
-                        android:id="@+id/lblDeLongitud"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="60dp"
-                        android:text="DE:" />
-
-                    <TextView
-                        android:id="@+id/lblALongitud"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="120dp"
-                        android:text="A:" />
+                        android:text="Selecciona la longitud origen:"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"/>
 
                     <Spinner
                         android:id="@+id/spnDeLongitud"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
                         android:entries="@array/spnLongitud" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selecciona la longitud destino:"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"/>
 
                     <Spinner
                         android:id="@+id/spnALongitud"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:layout_marginTop="120dp"
-                        android:entries="@array/spnLongitud"/>
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:entries="@array/spnLongitud" />
 
                     <EditText
                         android:id="@+id/txtCantidadLongitud"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/spnALongitud"
-                        android:layout_marginTop="40dp"
-                        android:hint="Cantidad a convertir" />
+                        android:hint="Cantidad a convertir"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"/>
 
                     <Button
                         android:id="@+id/btnCalcularLongitud"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/txtCantidadLongitud"
-                        android:layout_marginTop="40dp"
-                        android:text="CONVERTIR" />
-                </RelativeLayout>
+                        android:text="CONVERTIR"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"/>
+                </LinearLayout>
 
 
                 <LinearLayout
