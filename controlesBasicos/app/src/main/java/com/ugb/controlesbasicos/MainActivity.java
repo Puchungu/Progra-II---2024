@@ -39,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //verificacion de si el edit text esta vacio
+                EditText txtCantidadLongitud = findViewById(R.id.txtCantidadLongitud);
+                String cantidadStr = txtCantidadLongitud.getText().toString().trim();
+                if (cantidadStr.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 spn = findViewById(R.id.spnDeLongitud);
                 int de = spn.getSelectedItemPosition();
 
@@ -58,6 +66,15 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //verificacion de si el edit text esta vacio
+                EditText txtCantidadMoneda = findViewById(R.id.txtCantidadMoneda);
+                String cantidadStr = txtCantidadMoneda.getText().toString().trim();
+                if (cantidadStr.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 spn = findViewById(R.id.spnDeMoneda);
                 int de = spn.getSelectedItemPosition();
 
@@ -78,6 +95,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //verificacion de si el edit text esta vacio
+                EditText txtCantidadAlmacenamiento = findViewById(R.id.txtCantidadAlmacenamiento);
+                String cantidadStr = txtCantidadAlmacenamiento.getText().toString().trim();
+                if (cantidadStr.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 spn = findViewById(R.id.spnDeAlmacenamiento);
                 int de = spn.getSelectedItemPosition();
 
@@ -97,6 +121,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //verificacion de si el edit text esta vacio
+                EditText txtCantidadDatos = findViewById(R.id.txtCantidadDatos);
+                String cantidadStr = txtCantidadDatos.getText().toString().trim();
+                if (cantidadStr.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 spn = findViewById(R.id.spnDeDatos);
                 int de = spn.getSelectedItemPosition();
 
@@ -115,6 +146,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //verificacion de si el edit text esta vacio
+                EditText txtCantidadMasa = findViewById(R.id.txtCantidadMasa);
+                String cantidadStr = txtCantidadMasa.getText().toString().trim();
+                if (cantidadStr.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 spn = findViewById(R.id.spnDeMasa);
                 int de = spn.getSelectedItemPosition();
 
@@ -134,6 +172,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //verificacion de si el edit text esta vacio
+                EditText txtCantidadVolumen = findViewById(R.id.txtCantidadVolumen);
+                String cantidadStr = txtCantidadVolumen.getText().toString().trim();
+                if (cantidadStr.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 spn = findViewById(R.id.spnDeVolumen);
                 int de = spn.getSelectedItemPosition();
 
@@ -153,6 +198,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //verificacion de si el edit text esta vacio
+                EditText txtCantidadTiempo = findViewById(R.id.txtCantidadTiempo);
+                String cantidadStr = txtCantidadTiempo.getText().toString().trim();
+                if (cantidadStr.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 spn = findViewById(R.id.spnDeTiempo);
                 int de = spn.getSelectedItemPosition();
 
