@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         tbh.addTab(tbh.newTabSpec("VLM").setIndicator("Volumen", null).setContent(R.id.Volumen));
         tbh.addTab(tbh.newTabSpec("TMP").setIndicator("Tiempo", null).setContent(R.id.Tiempo));
 
-
+        //botonLongitud
         btn = findViewById(R.id.btnCalcularLongitud);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //botonMonedas
         btn = findViewById(R.id.btnCalcularMoneda);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 int a = spn.getSelectedItemPosition();
 
                 tempVal = findViewById(R.id.txtCantidadMoneda);
+
                 double cantidad = Double.parseDouble(tempVal.getText().toString());
                 double resp = objConversor.convertir(1, de, a, cantidad);
 
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //botonAlmacenamiento
         btn = findViewById(R.id.btnCalcularAlmacenamiento);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //botonDatos
         btn = findViewById(R.id.btnCalcularDatos);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
             }
         });
-
+        //botonMasa
         btn = findViewById(R.id.btnCalcularMasa);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //botonVolumen
         btn = findViewById(R.id.btnCalcularVolumen);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //botonTiempo
         btn = findViewById(R.id.btnCalcularTiempo);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     class conversores {
         double[][] valores = {
