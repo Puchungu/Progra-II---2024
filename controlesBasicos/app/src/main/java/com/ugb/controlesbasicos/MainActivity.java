@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         tbh.addTab(tbh.newTabSpec("LON").setIndicator("LONGITUD", null).setContent(R.id.Longitud));
         tbh.addTab(tbh.newTabSpec("MON").setIndicator("MONEDAS", null).setContent(R.id.Divisas));
         tbh.addTab(tbh.newTabSpec("ALM").setIndicator("ALMACENAMIENTO", null).setContent(R.id.Almacenamiento));
+        tbh.addTab(tbh.newTabSpec("DTS").setIndicator("Datos", null).setContent(R.id.Datos));
+        tbh.addTab(tbh.newTabSpec("MSA").setIndicator("Masa", null).setContent(R.id.Masa));
+        tbh.addTab(tbh.newTabSpec("VLM").setIndicator("Volumen", null).setContent(R.id.Volumen));
+        tbh.addTab(tbh.newTabSpec("TMP").setIndicator("Tiempo", null).setContent(R.id.Tiempo));
+
 
         btn = findViewById(R.id.btnCalcularLongitud);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -83,14 +88,89 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
             }
         });
+
+        btn = findViewById(R.id.btnCalcularDatos);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spn = findViewById(R.id.spnDeDatos);
+                int de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnADatos);
+                int a = spn.getSelectedItemPosition();
+
+                tempVal = findViewById(R.id.txtCantidadDatos);
+                double cantidad = Double.parseDouble(tempVal.getText().toString());
+                double resp = objConversor.convertir(3, de, a, cantidad);
+
+                Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btn = findViewById(R.id.btnCalcularMasa);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spn = findViewById(R.id.spnDeMasa);
+                int de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnAMasa);
+                int a = spn.getSelectedItemPosition();
+
+                tempVal = findViewById(R.id.txtCantidadMasa);
+                double cantidad = Double.parseDouble(tempVal.getText().toString());
+                double resp = objConversor.convertir(4, de, a, cantidad);
+
+                Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btn = findViewById(R.id.btnCalcularVolumen);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spn = findViewById(R.id.spnDeVolumen);
+                int de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnAVolumen);
+                int a = spn.getSelectedItemPosition();
+
+                tempVal = findViewById(R.id.txtCantidadVolumen);
+                double cantidad = Double.parseDouble(tempVal.getText().toString());
+                double resp = objConversor.convertir(5, de, a, cantidad);
+
+                Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btn = findViewById(R.id.btnCalcularTiempo);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spn = findViewById(R.id.spnDeTiempo);
+                int de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnATiempo);
+                int a = spn.getSelectedItemPosition();
+
+                tempVal = findViewById(R.id.txtCantidadTiempo);
+                double cantidad = Double.parseDouble(tempVal.getText().toString());
+                double resp = objConversor.convertir(6, de, a, cantidad);
+
+                Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     class conversores {
         double[][] valores = {
                 {1, 100, 39.3701, 3.28084, 1.193, 1.09361, 0.001, 0.000621371}, /*longitud*/
-                {1.0, 0.84, 0.73, 110.59, 1.27, 0.92, 1.31, 1.38, 20.08, 6.35},  /*monedas*/
-                {1000000, 1000, 1.0, 0.001, 0.000001, 0.0000000001, 0.0000000000001, 0.0000000000000001},
-
+                {1.0, 0.84, 0.73, 110.59, 1.27, 0.92, 1.31, 1.38, 20.08, 6.35},  //divisas
+                {1000000, 1000, 1.0, 0.001, 0.000001, 0.0000000001, 0.0000000000001, 0.0000000000000001}, //almacenamiento digital
+                {1,0.001,0.0000001,0.0000000001,0.0000000000001}, //transferencia de datos
+                {1, 1000, 2.20462, 35.274, 1000000, 1000000000, 0.001, 0.01}, //Masa
+                {1, 1000, 0.001, 1000, 0.001308, 0.264172, 33.814, 0.00629}, //volumen
+                {1, 60, 3600, 0.0416667, 0.00595238, 0.00136986, 0.000114155} //tiempo
         };
 
         public double convertir(int opcion, int de, int a, double cantidad) {
