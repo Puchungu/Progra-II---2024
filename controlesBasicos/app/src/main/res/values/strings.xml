@@ -25,14 +25,13 @@
     </string-array>
 
     <string-array name="spnAlmacenamiento">
+        <item>Bit</item>
         <item>Byte</item>
-        <item>Kilobytes</item>
-        <item>Megabytes</item>
-        <item>Gigabytes</item>
-        <item>Terabytes</item>
-        <item>Petabytes</item>
-        <item>Exabytes</item>
-        <item>Zettabytes</item>
+        <item>KiloByte</item>
+        <item>MegaByte</item>
+        <item>GigaByte</item>
+        <item>TeraByte</item>
+        <item>PetaByte</item>
     </string-array>
 
     <string-array name="spnDatos">
@@ -63,10 +62,11 @@
         <item>Barril</item>
     </string-array>
     <string-array name="spnTiempo">
+        <item>Milisegundo</item>
         <item>Segundo</item>
         <item>Minuto</item>
         <item>Hora</item>
-        <item>Día</item>
+        <item>Dia</item>
         <item>Semana</item>
         <item>Mes</item>
         <item>Año</item>
