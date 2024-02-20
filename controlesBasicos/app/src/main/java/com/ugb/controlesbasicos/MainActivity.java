@@ -63,6 +63,20 @@ public class MainActivity extends AppCompatActivity {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
     private void mostrarUbicacion(Location location){
-        tempVal.setText("Ubicacion: Altitud: "+ location.getAltitude() +"; Latitud: "+ location.getLatitude() + "; Longitud: "+ location.getLongitude());
+        StringBuilder ubicacionString = new StringBuilder();
+        ubicacionString.append("Ubicacion: Latitud=").append(location.getLatitude()).append("; Longitud=").append(location.getLongitude());
+
+        // Verificar si el proveedor de ubicación es GPS_PROVIDER (lo que indica que el dispositivo tiene un receptor GPS)
+        if (location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
+            // Verificar si la ubicación tiene información de altitud
+            if (location.hasAltitude()) {
+                ubicacionString.append("; Altitud=").append(location.getAltitude());
+            } else {
+                ubicacionString.append("; Altitud desconocida");
+            }
+        } else {
+            ubicacionString.append("; No se puede obtener la altitud sin GPS_PROVIDER");
+        }
+        tempVal.setText(ubicacionString.toString());
     }
 }
