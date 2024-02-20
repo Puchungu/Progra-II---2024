@@ -50,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
                 tempVal.setText("Acelerometro: X="+ sensorEvent.values[0]+ "; Y="+ sensorEvent.values[1] +"; Z="+
                         sensorEvent.values[2]);
             }
+                /*@Override
+                public void onSensorChanged(SensorEvent sensorEvent) {
+                float x = sensorEvent.values[0];
+                float y = sensorEvent.values[1];
+                float z = sensorEvent.values[2];
+                // Redondear los valores a dos decimales
+                x = Math.round(x * 100.0) / 100.0;
+                y = Math.round(y * 100.0) / 100.0;
+                z = Math.round(z * 100.0) / 100.0;
+
+                tempVal.setText("Acelerometro: X=" + x + "; Y=" + y + "; Z=" + z);
+                }*/
             @Override
             public void onAccuracyChanged(Sensor sensor, int i) {
 
