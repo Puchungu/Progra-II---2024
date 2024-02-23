@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">SENSOR GPS</string>
+    <string name="app_name">Conversores</string>
+
+    <string-array name="spnArea">
+        <item>Metro2</item>
+        <item>Pie2</item>
+        <item>Vara2</item>
+        <item>Yarda2</item>
+        <item>Tareas</item>
+        <item>Manzana</item>
+        <item>Hectarea</item>
+    </string-array>
+
+
 </resources>

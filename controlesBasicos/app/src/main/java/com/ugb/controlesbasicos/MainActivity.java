@@ -22,61 +22,92 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tempVal;
-    LocationManager locationManager;
-    LocationListener locationListener;
+TabHost tbh;
+TextView tempVal;
+Spinner spn;
+Button btn;
+conversores objConversor = new conversores();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tempVal = findViewById(R.id.lblSensorGps);
-        obtenerUbicacion();
-    }
-    private void obtenerUbicacion(){
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-            tempVal.setText("NO tienes permiso de acceder al GPS");
-            return;
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 1);
-            }
-        }
-        /*Location location = new Location(LocationManager.GPS_PROVIDER);
-        mostrarUbicacion(location);*/
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
-                Log.d("LocationUpdate", "Nueva ubicación: " + location.getLatitude() + ", " + location.getLongitude());
-                mostrarUbicacion(location);
-            }
-        };
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-    }
-    private void mostrarUbicacion(Location location){
-        StringBuilder ubicacionString = new StringBuilder();
-        ubicacionString.append("Ubicacion: Latitud=").append(location.getLatitude()).append("; Longitud=").append(location.getLongitude());
 
-        // Verificar si el proveedor de ubicación es GPS_PROVIDER (lo que indica que el dispositivo tiene un receptor GPS)
-        if (location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
-            // Verificar si la ubicación tiene información de altitud
-            if (location.hasAltitude()) {
-                ubicacionString.append("; Altitud=").append(location.getAltitude());
-            } else {
-                ubicacionString.append("; Altitud desconocida");
+        tbh = findViewById(R.id.tbhConversores);
+        tbh.setup();
+        tbh.addTab(tbh.newTabSpec("AGUA").setIndicator("Agua", null).setContent(R.id.tabTarifaxmetros));
+        tbh.addTab(tbh.newTabSpec("ARE").setIndicator("Area", null).setContent(R.id.ConversorDeArea));
+
+
+        btn = findViewById(R.id.btnCalcularAgua);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @ Override
+            public void onClick(View v) {
+                tempVal = findViewById(R.id.txtCantidadAPagar);
+                double cantidad = Double.parseDouble(tempVal.getText().toString());
+
+                double cuotafija = 6.0;
+                double tasasExceso = 0.45;
+
+                double sobreExceso = 0.45;
+
+                double valorPagar;
+
+                if (cantidad <= 18) {
+                    valorPagar = cuotafija;
+                } else if (cantidad <= 28) {
+                    double exceso = cantidad - 18;
+                    double cargoExceso = exceso * tasasExceso;
+                    valorPagar = cuotafija + cargoExceso;
+                } else {
+                    double exceso = cantidad - 20;
+                    double cargoExceso = exceso * sobreExceso;
+                    valorPagar = cuotafija * cargoExceso;
+                }
+                Toast.makeText(getApplicationContext(), "Respuesta: " + valorPagar, Toast.LENGTH_LONG).show();
             }
-        } else {
-            ubicacionString.append("; No se puede obtener la altitud sin GPS_PROVIDER");
+        });
+
+
+        //botonMonedas
+        btn = findViewById(R.id.btnCalcularArea);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spn = findViewById(R.id.spnDeArea);
+                int de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnAArea);
+                int a = spn.getSelectedItemPosition();
+
+                tempVal = findViewById(R.id.txtCantidadArea);
+
+                double cantidad = Double.parseDouble(tempVal.getText().toString());
+                double resp = objConversor.convertir(0, de, a, cantidad);
+
+                Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+
+    class conversores {
+        double[][] valores = {
+                {1,10.763,1.43,1.19599,0.0022883295194508,0.000143082804880,0.0001}
+        };
+
+        public double convertir(int opcion, int de, int a, double cantidad) {
+            return valores[opcion][a] / valores[opcion][de] * cantidad;
         }
-        tempVal.setText(ubicacionString.toString());
+
+
     }
 }
