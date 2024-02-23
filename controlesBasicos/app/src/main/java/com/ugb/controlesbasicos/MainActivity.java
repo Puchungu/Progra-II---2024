@@ -56,7 +56,7 @@ conversores objConversor = new conversores();
                 double cuotafija = 6.0;
                 double tasasExceso = 0.45;
 
-                double sobreExceso = 0.45;
+                double sobreExceso = 0.65;
 
                 double valorPagar;
 
@@ -67,9 +67,9 @@ conversores objConversor = new conversores();
                     double cargoExceso = exceso * tasasExceso;
                     valorPagar = cuotafija + cargoExceso;
                 } else {
-                    double exceso = cantidad - 20;
+                    double exceso = cantidad - 28;
                     double cargoExceso = exceso * sobreExceso;
-                    valorPagar = cuotafija * cargoExceso;
+                    valorPagar = cuotafija + cargoExceso;
                 }
                 Toast.makeText(getApplicationContext(), "Respuesta: " + valorPagar, Toast.LENGTH_LONG).show();
             }
