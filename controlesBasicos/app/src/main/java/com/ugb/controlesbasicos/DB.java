@@ -29,22 +29,22 @@ public class DB extends SQLiteOpenHelper {
 
 
 
-    public String administrar_amigos(String accion, String[] datos) {
+    public String administrar_amigos(String accion, String[] datos){
         try {
             SQLiteDatabase db = getWritableDatabase();
             String sql = "";
-            if (accion == "nuevo") {
-                sql = "INSERT INTO amigos(nombre,direccion,telefono,email,dui) VALUES('" + datos[1] + "', '" + datos[2] + "', '" + datos[3] + "', " +
-                        "'" + datos[4] + "','" + datos[5] + "')";
-            } else if (accion == "modificar") {
-                sql = "UPDATE amigos SET nombre='" + datos[1] + "', direccion='" + datos[2] + "', telefono='" + datos[3] + "', email=" +
-                        "'" + datos[4] + "', dui='" + datos[5] + "' WHERE idAmigo='" + datos[0] + "'";
-            } else if (accion == "eliminar") {
-                sql = "DELETE FROM amigos WHERE idAmigo=" + datos[0] + "'";
+            if( accion=="nuevo" ){
+                sql = "INSERT INTO amigos(nombre,direccion,telefono,email,dui) VALUES('"+ datos[1] +"', '"+ datos[2] +"', '"+ datos[3] +"', " +
+                        "'"+ datos[4] +"','"+ datos[5] +"')";
+            } else if (accion=="modificar") {
+                sql = "UPDATE amigos SET nombre='"+ datos[1] +"', direccion='"+ datos[2] +"', telefono='"+ datos[3] +"', email=" +
+                        "'"+ datos[4] +"', dui='"+ datos[5] +"' WHERE idAmigo='"+ datos[0] +"'";
+            } else if (accion=="eliminar") {
+                sql = "DELETE FROM amigos WHERE idAmigo="+ datos[0] +"'";
             }
             db.execSQL(sql);
             return "ok";
-        } catch (Exception e) {
+        }catch (Exception e){
             return e.getMessage();
         }
     }
