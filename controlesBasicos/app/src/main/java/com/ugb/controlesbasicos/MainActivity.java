@@ -29,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         fabRegresarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent regresarListaAmigos = new Intent(MainActivity.this, listado_amigos.class);
-                startActivity(regresarListaAmigos);
+                abrirActividad();
             }
         });
 
@@ -66,5 +65,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void abrirActividad(){
+        Intent abrirActividad = new Intent(getApplicationContext(), listado_amigos.class);
+        startActivity(abrirActividad);
     }
 }
