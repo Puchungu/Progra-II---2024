@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fab = findViewById(R.id.fabRegresarLtsAmigos);
+        fab = findViewById(R.id.fabRegresarLtsProductos);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 abrirActividad();
             }
         });
-        btn = findViewById(R.id.btnGuardarAgendaAmigos);
+        btn = findViewById(R.id.btnGuardarProducto);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,22 +41,22 @@ public class MainActivity extends AppCompatActivity {
                     tempVal = findViewById(R.id.txtNombre);
                     String nombre = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtDireccion);
+                    tempVal = findViewById(R.id.txtDescripcion);
                     String direccion = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtTelefono);
+                    tempVal = findViewById(R.id.txtMarca);
                     String tel = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtEmail);
+                    tempVal = findViewById(R.id.txtPresentacion);
                     String email = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtDui);
+                    tempVal = findViewById(R.id.txtPrecio);
                     String dui = tempVal.getText().toString();
 
                     DB db = new DB(getApplicationContext(), "",null, 1);
                     String[] datos = new String[]{id,nombre,direccion,tel,email,dui};
                     mostrarMsg(accion);
-                    String respuesta = db.administrar_amigos(accion, datos);
+                    String respuesta = db.administrar_productos(accion, datos);
                     if(respuesta.equals("ok")){
                         Toast.makeText(getApplicationContext(), "Amigo guardado con exito", Toast.LENGTH_LONG).show();
                         abrirActividad();
@@ -82,16 +82,16 @@ public class MainActivity extends AppCompatActivity {
                 tempVal = findViewById(R.id.txtNombre);
                 tempVal.setText(amigos[1]);
 
-                tempVal = findViewById(R.id.txtDireccion);
+                tempVal = findViewById(R.id.txtDescripcion);
                 tempVal.setText(amigos[2]);
 
-                tempVal = findViewById(R.id.txtTelefono);
+                tempVal = findViewById(R.id.txtMarca);
                 tempVal.setText(amigos[3]);
 
-                tempVal = findViewById(R.id.txtEmail);
+                tempVal = findViewById(R.id.txtPresentacion);
                 tempVal.setText(amigos[4]);
 
-                tempVal = findViewById(R.id.txtDui);
+                tempVal = findViewById(R.id.txtPrecio);
                 tempVal.setText(amigos[5]);
             }
         }catch (Exception e){

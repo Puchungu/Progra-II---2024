@@ -15,51 +15,51 @@
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/txtDireccion"
+        android:id="@+id/txtDescripcion"
         android:inputType="textMultiLine"
-        android:hint="Direccion"
+        android:hint="Descripcion"
         android:layout_below="@id/txtNombre"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/txtTelefono"
-        android:inputType="phone"
-        android:hint="Telefono"
-        android:layout_below="@id/txtDireccion"
+        android:id="@+id/txtMarca"
+        android:inputType="textMultiLine"
+        android:hint="Marca"
+        android:layout_below="@id/txtDescripcion"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/txtEmail"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
-        android:layout_below="@id/txtTelefono"
+        android:id="@+id/txtPresentacion"
+        android:inputType="textMultiLine"
+        android:hint="Presentacion"
+        android:layout_below="@id/txtMarca"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/txtDui"
-        android:inputType="number"
-        android:hint="Dui"
-        android:layout_below="@id/txtEmail"
+        android:id="@+id/txtPrecio"
+        android:inputType="numberDecimal"
+        android:hint="Precio"
+        android:layout_below="@id/txtPresentacion"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnGuardarAgendaAmigos"
-        android:layout_below="@id/txtDui"
+        android:id="@+id/btnGuardarProducto"
+        android:layout_below="@id/txtPrecio"
         android:layout_marginTop="40dp"
         android:text="GUARDAR AMIGOS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabRegresarLtsAmigos"
+        android:id="@+id/fabRegresarLtsProductos"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"

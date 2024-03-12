@@ -22,28 +22,26 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Locale;
-import kotlin.contracts.Returns;
 
 public class listado_amigos extends AppCompatActivity {
-    Bundle paramatros = new Bundle();
+    Bundle parametros = new Bundle();
     DB db;
     ListView lts;
-    Cursor cAmigos;
-    final ArrayList<amigos> alAmigos = new ArrayList<amigos>();
-    final ArrayList<amigos> alAmigosCopy = new ArrayList<amigos>();
-    amigos datosAmigos;
+    Cursor cProductos;
+    final ArrayList<Productos> alProductos = new ArrayList<Productos>();
+    final ArrayList<Productos> alProductosCopy = new ArrayList<Productos>();
+    Productos datosProductos;
     FloatingActionButton btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listado_amigos);
-        btn = findViewById(R.id.fabAgregarAmigos);
+        btn = findViewById(R.id.fabAgregarProductos);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                paramatros.putString("accion","nuevo");
-                abrirActividad(paramatros);
+                parametros.putString("accion","nuevo");
+                abrirActividad(parametros);
             }
         });
         obtenerAmigos();
@@ -56,29 +54,29 @@ public class listado_amigos extends AppCompatActivity {
         inflater.inflate(R.menu.mimenu, menu);
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        cAmigos.moveToPosition(info.position);
-        menu.setHeaderTitle("Que deseas hacer con "+ cAmigos.getString(1));//1 es el campo nombre
+        cProductos.moveToPosition(info.position);
+        menu.setHeaderTitle("Que deseas hacer con "+ cProductos.getString(1));//1 es el campo nombre
     }
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         try{
             switch (item.getItemId()){
                 case R.id.mnxAgregar:
-                    paramatros.putString("accion", "nuevo");
-                    abrirActividad(paramatros);
+                    parametros.putString("accion", "nuevo");
+                    abrirActividad(parametros);
                     break;
                 case R.id.mnxModificar:
                     String[] amigos = {
-                            cAmigos.getString(0), //idAmigo
-                            cAmigos.getString(1), //nombre
-                            cAmigos.getString(2), //direccion
-                            cAmigos.getString(3), //telefono
-                            cAmigos.getString(4), //email
-                            cAmigos.getString(5), //dui
+                            cProductos.getString(0), //idAmigo
+                            cProductos.getString(1), //nombre
+                            cProductos.getString(2), //direccion
+                            cProductos.getString(3), //telefono
+                            cProductos.getString(4), //email
+                            cProductos.getString(5), //dui
                     };
-                    paramatros.putString("accion", "modificar");
-                    paramatros.putStringArray("amigos", amigos);
-                    abrirActividad(paramatros);
+                    parametros.putString("accion", "modificar");
+                    parametros.putStringArray("amigos", amigos);
+                    abrirActividad(parametros);
                     break;
                 case R.id.mnxEliminar:
                     eliminarAmigo();
@@ -94,11 +92,11 @@ public class listado_amigos extends AppCompatActivity {
         try {
             AlertDialog.Builder confirmar = new AlertDialog.Builder(listado_amigos.this);
             confirmar.setTitle("Esta seguro de eliinar a: ");
-            confirmar.setMessage(cAmigos.getString(1));
+            confirmar.setMessage(cProductos.getString(1));
             confirmar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    String respuesta = db.administrar_amigos("eliminar", new String[]{cAmigos.getString(0)});
+                    String respuesta = db.administrar_productos("eliminar", new String[]{cProductos.getString(0)});
                     if( respuesta.equals("ok") ){
                         mostrarMsg("Amigo eliminado con exito");
                         obtenerAmigos();
@@ -119,7 +117,7 @@ public class listado_amigos extends AppCompatActivity {
         }
     }
     private void buscarAmigos(){
-        TextView tempVal = findViewById(R.id.txtBuscarAmigos);
+        TextView tempVal = findViewById(R.id.txtBuscarProductos);
         tempVal.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -128,24 +126,24 @@ public class listado_amigos extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 try{
-                    alAmigos.clear();
+                    alProductos.clear();
                     String valor = tempVal.getText().toString().trim().toLowerCase();
                     if( valor.length()<=0 ){
-                        alAmigos.addAll(alAmigosCopy);
+                        alProductos.addAll(alProductosCopy);
                     }else{
-                        for (amigos amigo : alAmigosCopy){
+                        for (Productos amigo : alProductosCopy){
                             String nombre = amigo.getNombre();
-                            String direccion = amigo.getDireccion();
-                            String tel = amigo.getTelefono();
-                            String email = amigo.getEmail();
+                            String direccion = amigo.getDescripcion();
+                            String tel = amigo.getMarca();
+                            String email = amigo.getPresentacion();
                             if( nombre.trim().toLowerCase().contains(valor) ||
                                     direccion.trim().toLowerCase().contains(valor) ||
                                     tel.trim().contains(valor) ||
                                     email.trim().toLowerCase().contains(valor)){
-                                alAmigos.add(amigo);
+                                alProductos.add(amigo);
                             }
                         }
-                        adaptadorImagenes adImagenes=new adaptadorImagenes(getApplicationContext(), alAmigos);
+                        adaptadorImagenes adImagenes=new adaptadorImagenes(getApplicationContext(), alProductos);
                         lts.setAdapter(adImagenes);
                     }
                 }catch (Exception e){
@@ -165,33 +163,33 @@ public class listado_amigos extends AppCompatActivity {
     }
     private void obtenerAmigos(){
         try{
-            alAmigos.clear();
-            alAmigosCopy.clear();
+            alProductos.clear();
+            alProductosCopy.clear();
 
             db = new DB(getApplicationContext(),"", null, 1);
-            cAmigos = db.obtener_amigos();
-            if( cAmigos.moveToFirst() ){
-                lts = findViewById(R.id.ltsAmigos);
+            cProductos = db.obtener_producto();
+            if( cProductos.moveToFirst() ){
+                lts = findViewById(R.id.ltsProductos);
                 do{
-                    datosAmigos = new amigos(
-                            cAmigos.getString(0),//idAmigo
-                            cAmigos.getString(1),//nombre
-                            cAmigos.getString(2),//direccion
-                            cAmigos.getString(3),//telefono
-                            cAmigos.getString(4),//email
-                            cAmigos.getString(5)//dui
+                    datosProductos = new Productos(
+                            cProductos.getString(0),//idAmigo
+                            cProductos.getString(1),//nombre
+                            cProductos.getString(2),//direccion
+                            cProductos.getString(3),//telefono
+                            cProductos.getString(4),//email
+                            cProductos.getString(5)//dui
                     );
-                    alAmigos.add(datosAmigos);
-                }while (cAmigos.moveToNext());
-                alAmigosCopy.addAll(alAmigos);
+                    alProductos.add(datosProductos);
+                }while (cProductos.moveToNext());
+                alProductosCopy.addAll(alProductos);
 
-                adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alAmigos);
+                adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alProductos);
                 lts.setAdapter(adImagenes);
 
                 registerForContextMenu(lts);
             }else {
-                paramatros.putString("accion", "nuevo");
-                abrirActividad(paramatros);
+                parametros.putString("accion", "nuevo");
+                abrirActividad(parametros);
                 mostrarMsg("No hay Datos de amigos.");
             }
         }catch (Exception e){
