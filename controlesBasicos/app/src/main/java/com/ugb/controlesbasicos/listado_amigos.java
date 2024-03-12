@@ -91,17 +91,17 @@ public class listado_amigos extends AppCompatActivity {
     private void eliminarAmigo(){
         try {
             AlertDialog.Builder confirmar = new AlertDialog.Builder(listado_amigos.this);
-            confirmar.setTitle("Esta seguro de eliinar a: ");
+            confirmar.setTitle("Esta seguro de eliinar: ");
             confirmar.setMessage(cProductos.getString(1));
             confirmar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     String respuesta = db.administrar_productos("eliminar", new String[]{cProductos.getString(0)});
                     if( respuesta.equals("ok") ){
-                        mostrarMsg("Amigo eliminado con exito");
+                        mostrarMsg("item eliminado con exito");
                         obtenerAmigos();
                     }else{
-                        mostrarMsg("Error al eliminar el amigo: "+ respuesta);
+                        mostrarMsg("Error al eliminar el item: "+ respuesta);
                     }
                 }
             });
@@ -190,10 +190,10 @@ public class listado_amigos extends AppCompatActivity {
             }else {
                 parametros.putString("accion", "nuevo");
                 abrirActividad(parametros);
-                mostrarMsg("No hay Datos de amigos.");
+                mostrarMsg("No hay Datos de productos.");
             }
         }catch (Exception e){
-            mostrarMsg("Error al obtener los amigos: "+ e.getMessage());
+            mostrarMsg("Error al obtener los productos: "+ e.getMessage());
         }
     }
     private void mostrarMsg(String msg){

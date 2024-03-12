@@ -55,13 +55,12 @@ public class MainActivity extends AppCompatActivity {
 
                     DB db = new DB(getApplicationContext(), "",null, 1);
                     String[] datos = new String[]{id,nombre,direccion,tel,email,dui};
-                    mostrarMsg(accion);
                     String respuesta = db.administrar_productos(accion, datos);
                     if(respuesta.equals("ok")){
-                        Toast.makeText(getApplicationContext(), "Amigo guardado con exito", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Producto guardado con exito", Toast.LENGTH_LONG).show();
                         abrirActividad();
                     }else{
-                        Toast.makeText(getApplicationContext(), "Error al intentar guardar el amigo: "+ respuesta, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error al intentar guardar el Producto: "+ respuesta, Toast.LENGTH_LONG).show();
                     }
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Error: "+ e.getMessage(), Toast.LENGTH_LONG).show();
