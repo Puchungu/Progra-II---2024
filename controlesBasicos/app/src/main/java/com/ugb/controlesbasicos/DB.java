@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 public class DB extends SQLiteOpenHelper {
     private static final String dbname = "tienda";
     private static final int v =1;
-    private static final String SQLdb = "CREATE TABLE tienda(idProducto integer primary key autoincrement, nombre text, descripcion text, marca text, presentacion text, precio text)";
+    private static final String SQLdb = "CREATE TABLE tienda(idProducto integer primary key autoincrement, nombre text, descripcion text, marca text, presentacion text, precio text,foto text)";
 
     public DB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, dbname, factory, v);
@@ -35,11 +35,11 @@ public class DB extends SQLiteOpenHelper {
             SQLiteDatabase db = getWritableDatabase();
             String sql = "";
             if( accion.equals("nuevo") ){
-                sql = "INSERT INTO tienda(nombre,descripcion,marca,presentacion,precio) VALUES('"+ datos[1] +"', '"+ datos[2] +"', '"+ datos[3] +"', " +
-                        "'"+ datos[4] +"','"+ datos[5] +"')";
+                sql = "INSERT INTO tienda(nombre,descripcion,marca,presentacion,precio,foto) VALUES('"+ datos[1] +"', '"+ datos[2] +"', '"+ datos[3] +"', " +
+                        "'"+ datos[4] +"','"+ datos[5] +"', '"+ datos[6] +"')";
             } else if (accion.equals("modificar")) {
                 sql = "UPDATE tienda SET nombre='"+ datos[1] +"', descripcion='"+ datos[2] +"', marca='"+ datos[3] +"', presentacion=" +
-                        "'"+ datos[4] +"', precio='"+ datos[5] +"' WHERE idProducto='"+ datos[0] +"'";
+                        "'"+ datos[4] +"', precio='"+ datos[5] +"', foto='"+ datos[6] + "' WHERE idProducto='"+ datos[0] +"'";
             } else if (accion.equals("eliminar")) {
                 sql = "DELETE FROM tienda WHERE idProducto='"+ datos[0] +"'";
             }

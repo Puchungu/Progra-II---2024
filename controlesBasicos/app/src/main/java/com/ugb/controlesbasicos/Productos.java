@@ -7,16 +7,26 @@ public class Productos {
     String marca;
     String presentacion;
     String precio;
+    String urlFotoProd;
 
-    public Productos(String idProd, String nombre, String descripcion, String marca, String presentacion, String precio) {
+    public Productos(String idProd, String nombre, String descripcion, String marca, String presentacion, String precio, String urlFoto) {
         this.idProd = idProd;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.marca = marca;
         this.presentacion = presentacion;
         this.precio = precio;
+        this.urlFotoProd = urlFoto;
+
     }
 
+    public String getUrlFotoProd() {
+        return urlFotoProd;
+    }
+
+    public void setUrlFotoProd(String urlFotoProd) {
+        this.urlFotoProd = urlFotoProd;
+    }
     public String getIdProd() {
         return idProd;
     }

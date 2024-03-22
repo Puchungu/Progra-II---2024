@@ -1,10 +1,13 @@
 package com.ugb.controlesbasicos;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +55,10 @@ public class adaptadorImagenes extends BaseAdapter {
 
             tempVal = itemView.findViewById(R.id.lblPrecio);
             tempVal.setText(datosProductos.getPrecio());
+
+            Bitmap imageBitmap = BitmapFactory.decodeFile(datosProductos.getUrlFotoProd());
+            ImageView img = itemView.findViewById(R.id.imgFoto);
+            img.setImageBitmap(imageBitmap);
         }catch (Exception e){
             Toast.makeText(context, "Error al mostrar los datos: "+ e.getMessage(), Toast.LENGTH_LONG).show();
         }

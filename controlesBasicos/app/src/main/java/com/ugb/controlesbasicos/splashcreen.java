@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,7 +16,7 @@ public class splashcreen extends Activity {
         TimerTask tarea = new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(splashcreen.this, listado_amigos.class);
+                Intent intent = new Intent(splashcreen.this, listado_productos.class);
                 startActivity(intent);
                 finish();
             }

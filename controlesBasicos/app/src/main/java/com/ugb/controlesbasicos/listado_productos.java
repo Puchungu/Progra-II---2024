@@ -23,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class listado_amigos extends AppCompatActivity {
+public class listado_productos extends AppCompatActivity {
     Bundle parametros = new Bundle();
     DB db;
     ListView lts;
@@ -35,7 +35,7 @@ public class listado_amigos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listado_amigos);
+        setContentView(R.layout.listado_productos);
         btn = findViewById(R.id.fabAgregarProductos);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +73,7 @@ public class listado_amigos extends AppCompatActivity {
                             cProductos.getString(3), //telefono
                             cProductos.getString(4), //email
                             cProductos.getString(5), //dui
+                            cProductos.getString(6), //foto
                     };
                     parametros.putString("accion", "modificar");
                     parametros.putStringArray("amigos", amigos);
@@ -90,7 +91,7 @@ public class listado_amigos extends AppCompatActivity {
     }
     private void eliminarAmigo(){
         try {
-            AlertDialog.Builder confirmar = new AlertDialog.Builder(listado_amigos.this);
+            AlertDialog.Builder confirmar = new AlertDialog.Builder(listado_productos.this);
             confirmar.setTitle("Esta seguro de eliinar: ");
             confirmar.setMessage(cProductos.getString(1));
             confirmar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
@@ -177,7 +178,8 @@ public class listado_amigos extends AppCompatActivity {
                             cProductos.getString(2),//direccion
                             cProductos.getString(3),//telefono
                             cProductos.getString(4),//email
-                            cProductos.getString(5)//dui
+                            cProductos.getString(5),//dui
+                            cProductos.getString(6)//foto
                     );
                     alProductos.add(datosProductos);
                 }while (cProductos.moveToNext());
