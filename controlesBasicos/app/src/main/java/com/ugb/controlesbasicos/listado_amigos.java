@@ -21,8 +21,12 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Locale;
+
 import kotlin.contracts.Returns;
 
 public class listado_amigos extends AppCompatActivity {
@@ -34,6 +38,10 @@ public class listado_amigos extends AppCompatActivity {
     final ArrayList<amigos> alAmigosCopy = new ArrayList<amigos>();
     amigos datosAmigos;
     FloatingActionButton btn;
+    JSONArray datosJSON; //para los datos que vienen del servidor.
+    JSONObject jsonObject;
+    obtenerDatosServidor datosServidor;
+    detectarInternet di;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +54,61 @@ public class listado_amigos extends AppCompatActivity {
                 abrirActividad(paramatros);
             }
         });
-        obtenerAmigos();
+        di = new detectarInternet(getApplicationContext());
+        if( di.hayConexionInternet() ){
+            obtenerDatosAmigosServidor();
+        }else{
+            obtenerAmigos();//offline
+        }
         buscarAmigos();
+    }
+    private void obtenerDatosAmigosServidor(){
+        try{
+            datosServidor = new obtenerDatosServidor();
+            String data = datosServidor.execute().get();
+
+            jsonObject =new JSONObject(data);
+            datosJSON = jsonObject.getJSONArray("rows");
+            mostrarDatosAmigos();
+        }catch (Exception e){
+            mostrarMsg("Error al obtener datos amigos del server: "+ e.getMessage());
+        }
+    }
+    private void mostrarDatosAmigos(){
+        try{
+            if( datosJSON.length()>0 ){
+                lts = findViewById(R.id.ltsAmigos);
+                alAmigos.clear();
+                alAmigosCopy.clear();
+
+                JSONObject misDatosJSONObject;
+                for (int i=0; i<datosJSON.length(); i++){
+                    misDatosJSONObject = datosJSON.getJSONObject(i).getJSONObject("value");
+                    datosAmigos = new amigos(
+                            misDatosJSONObject.getString("_id"),
+                            misDatosJSONObject.getString("_rev"),
+                            misDatosJSONObject.getString("idAmigo"),
+                            misDatosJSONObject.getString("nombre"),
+                            misDatosJSONObject.getString("direccion"),
+                            misDatosJSONObject.getString("telefono"),
+                            misDatosJSONObject.getString("email"),
+                            misDatosJSONObject.getString("dui"),
+                            misDatosJSONObject.getString("urlCompletaFoto")
+                    );
+                    alAmigos.add(datosAmigos);
+                }
+                alAmigosCopy.addAll(alAmigos);
+
+                adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alAmigos);
+                lts.setAdapter(adImagenes);
+
+                registerForContextMenu(lts);
+            }else{
+                mostrarMsg("No hay datos que mostrar");
+            }
+        }catch (Exception e){
+            mostrarMsg("Error al mostrar datos: "+ e.getMessage());
+        }
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -75,6 +136,7 @@ public class listado_amigos extends AppCompatActivity {
                             cAmigos.getString(3), //telefono
                             cAmigos.getString(4), //email
                             cAmigos.getString(5), //dui
+                            cAmigos.getString(6), //foto
                     };
                     paramatros.putString("accion", "modificar");
                     paramatros.putStringArray("amigos", amigos);
@@ -163,32 +225,30 @@ public class listado_amigos extends AppCompatActivity {
         abrirActividad.putExtras(parametros);
         startActivity(abrirActividad);
     }
-    private void obtenerAmigos(){
+    private void obtenerAmigos(){ //offline
         try{
-            alAmigos.clear();
-            alAmigosCopy.clear();
-
             db = new DB(getApplicationContext(),"", null, 1);
             cAmigos = db.obtener_amigos();
             if( cAmigos.moveToFirst() ){
-                lts = findViewById(R.id.ltsAmigos);
+                datosJSON = new JSONArray();
                 do{
-                    datosAmigos = new amigos(
-                            cAmigos.getString(0),//idAmigo
-                            cAmigos.getString(1),//nombre
-                            cAmigos.getString(2),//direccion
-                            cAmigos.getString(3),//telefono
-                            cAmigos.getString(4),//email
-                            cAmigos.getString(5)//dui
-                    );
-                    alAmigos.add(datosAmigos);
+                    jsonObject = new JSONObject();
+                    JSONObject jsonObjectValue = new JSONObject();
+
+                    jsonObject.put("_id", cAmigos.getString(0));
+                    jsonObject.put("_rev", cAmigos.getString(1));
+                    jsonObject.put("idAmigo", cAmigos.getString(2));
+                    jsonObject.put("nombre", cAmigos.getString(3));
+                    jsonObject.put("direccion", cAmigos.getString(4));
+                    jsonObject.put("telefono", cAmigos.getString(5));
+                    jsonObject.put("email", cAmigos.getString(6));
+                    jsonObject.put("dui", cAmigos.getString(7));
+                    jsonObject.put("urlCompletaFoto", cAmigos.getString(8));
+                    jsonObjectValue.put("value", jsonObject);
+
+                    datosJSON.put(jsonObjectValue);
                 }while (cAmigos.moveToNext());
-                alAmigosCopy.addAll(alAmigos);
-
-                adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alAmigos);
-                lts.setAdapter(adImagenes);
-
-                registerForContextMenu(lts);
+                mostrarDatosAmigos();
             }else {
                 paramatros.putString("accion", "nuevo");
                 abrirActividad(paramatros);
