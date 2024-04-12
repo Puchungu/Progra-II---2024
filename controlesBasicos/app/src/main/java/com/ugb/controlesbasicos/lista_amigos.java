@@ -74,7 +74,7 @@ public class lista_amigos extends AppCompatActivity {
             datosJSON = jsonObject.getJSONArray("rows");
             mostrarDatosAmigos();
         }catch (Exception e){
-            mostrarMsg("Error al obtener datos amigos del server: "+ e.getMessage());
+            mostrarMsg("Error al obtener datos productos del server: "+ e.getMessage());
         }
     }
     private void mostrarDatosAmigos(){
@@ -160,10 +160,10 @@ public class lista_amigos extends AppCompatActivity {
                     try {
                         String respuesta = db.administrar_amigos("eliminar", new String[]{"", "", datosJSON.getJSONObject(posicion).getJSONObject("value").getString("idAmigo")});
                         if (respuesta.equals("ok")) {
-                            mostrarMsg("Amigo eliminado con exito");
+                            mostrarMsg("Producto eliminado con exito");
                             obtenerAmigos();
                         } else {
-                            mostrarMsg("Error al eliminar el amigo: " + respuesta);
+                            mostrarMsg("Error al eliminar el producto: " + respuesta);
                         }
                     }catch (Exception e){
                         mostrarMsg("Error al eliminar datos: "+ e.getMessage());
@@ -256,7 +256,7 @@ public class lista_amigos extends AppCompatActivity {
                 mostrarMsg("No hay Datos de amigos.");
             }
         }catch (Exception e){
-            mostrarMsg("Error al obtener los amigos : "+ e.getMessage());
+            mostrarMsg("Error al obtener los productos : "+ e.getMessage());
         }
     }
     private void mostrarMsg(String msg){
