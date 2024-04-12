@@ -58,17 +58,17 @@ public class MainActivity extends AppCompatActivity {
                     tempVal = findViewById(R.id.txtnombre);
                     String nombre = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtdireccion);
-                    String direccion = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtdescripcion);
+                    String descripcion = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtTelefono);
-                    String tel = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtmarca);
+                    String marca = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtemail);
-                    String email = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtpresentacion);
+                    String presentacion = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtdui);
-                    String dui = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtprecio);
+                    String precio = tempVal.getText().toString();
 
                     //guardar datos en el servidor
                     JSONObject datosAmigos = new JSONObject();
@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                     datosAmigos.put("idAmigo", idAmigo);
                     datosAmigos.put("nombre", nombre);
-                    datosAmigos.put("direccion", direccion);
-                    datosAmigos.put("telefono", tel);
-                    datosAmigos.put("email", email);
-                    datosAmigos.put("dui", dui);
+                    datosAmigos.put("descripcion", descripcion);
+                    datosAmigos.put("marca", marca);
+                    datosAmigos.put("presentacion", presentacion);
+                    datosAmigos.put("precio", precio);
                     datosAmigos.put("urlCompletaFoto", urlCompletaFoto);
 
                     String respuesta = "";
@@ -96,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
                         mostrarMsg("Error al guardar datos en el servidor");
                     }
                     DB db = new DB(getApplicationContext(), "",null, 1);
-                    String[] datos = new String[]{id, rev, idAmigo,nombre,direccion,tel,email,dui, urlCompletaFoto};
+                    String[] datos = new String[]{id, rev, idAmigo,nombre,descripcion,marca,presentacion,precio, urlCompletaFoto};
                     respuesta = db.administrar_amigos(accion, datos);
                     if(respuesta.equals("ok")){
                         Toast.makeText(getApplicationContext(), "Amigo guardado con exito", Toast.LENGTH_LONG).show();
                         abrirActividad();
                     }else{
-                        Toast.makeText(getApplicationContext(), "Error al intentar guardar el amigo: "+ respuesta, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error "+ respuesta, Toast.LENGTH_LONG).show();
                     }
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Error: "+ e.getMessage(), Toast.LENGTH_LONG).show();
@@ -174,17 +174,17 @@ public class MainActivity extends AppCompatActivity {
                 tempVal = findViewById(R.id.txtnombre);
                 tempVal.setText(jsonObject.getString("nombre"));
 
-                tempVal = findViewById(R.id.txtdireccion);
-                tempVal.setText(jsonObject.getString("direccion"));
+                tempVal = findViewById(R.id.txtdescripcion);
+                tempVal.setText(jsonObject.getString("descripcion"));
 
-                tempVal = findViewById(R.id.txtTelefono);
-                tempVal.setText(jsonObject.getString("telefono"));
+                tempVal = findViewById(R.id.txtmarca);
+                tempVal.setText(jsonObject.getString("marca"));
 
-                tempVal = findViewById(R.id.txtemail);
-                tempVal.setText(jsonObject.getString("email"));
+                tempVal = findViewById(R.id.txtpresentacion);
+                tempVal.setText(jsonObject.getString("presentacion"));
 
-                tempVal = findViewById(R.id.txtdui);
-                tempVal.setText(jsonObject.getString("dui"));
+                tempVal = findViewById(R.id.txtprecio);
+                tempVal.setText(jsonObject.getString("precio"));
 
                 urlCompletaFoto = jsonObject.getString("urlCompletaFoto");
                 Bitmap imageBitmap = BitmapFactory.decodeFile(urlCompletaFoto);

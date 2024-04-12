@@ -25,42 +25,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtdireccion"
-        android:hint="Direccion"
+        android:id="@+id/txtdescripcion"
+        android:hint="descripcion"
         android:inputType="textMultiLine"
         android:layout_below="@id/txtnombre"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtTelefono"
-        android:hint="Telefono"
-        android:inputType="phone"
-        android:layout_below="@id/txtdireccion"
+        android:id="@+id/txtmarca"
+        android:hint="marca"
+        android:inputType="textPersonName"
+        android:layout_below="@id/txtdescripcion"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtemail"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_below="@id/txtTelefono"
+        android:id="@+id/txtpresentacion"
+        android:hint="presentacion"
+        android:inputType="textMultiLine"
+        android:layout_below="@id/txtmarca"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtdui"
-        android:inputType="number"
-        android:hint="DUI"
-        android:layout_below="@id/txtemail"
+        android:id="@+id/txtprecio"
+        android:inputType="numberDecimal"
+        android:hint="precio"
+        android:layout_below="@id/txtpresentacion"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btnGuardarAgendaAmigos"
-        android:layout_below="@id/txtdui"
+        android:layout_below="@id/txtprecio"
         android:layout_marginTop="40dp"
-        android:text="GUARDAR AMIGO"
+        android:text="GUARDAR PRODUCTO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton

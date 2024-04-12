@@ -92,10 +92,10 @@ public class lista_amigos extends AppCompatActivity {
                             misDatosJSONObject.getString("_rev"),
                             misDatosJSONObject.getString("idAmigo"),
                             misDatosJSONObject.getString("nombre"),
-                            misDatosJSONObject.getString("direccion"),
-                            misDatosJSONObject.getString("telefono"),
-                            misDatosJSONObject.getString("email"),
-                            misDatosJSONObject.getString("dui"),
+                            misDatosJSONObject.getString("descripcion"),
+                            misDatosJSONObject.getString("marca"),
+                            misDatosJSONObject.getString("presentacion"),
+                            misDatosJSONObject.getString("precio"),
                             misDatosJSONObject.getString("urlCompletaFoto")
                     );
                     alAmigos.add(datosAmigos);
@@ -198,13 +198,13 @@ public class lista_amigos extends AppCompatActivity {
                     }else{
                         for (amigos amigo : alAmigosCopy){
                             String nombre = amigo.getNombre();
-                            String direccion = amigo.getDireccion();
-                            String tel = amigo.getTelefono();
-                            String email = amigo.getEmail();
+                            String descripcion = amigo.getDescripcion();
+                            String tel = amigo.getMarca();
+                            String presentacion = amigo.getPresentacion();
                             if( nombre.trim().toLowerCase().contains(valor) ||
-                                    direccion.trim().toLowerCase().contains(valor) ||
+                                    descripcion.trim().toLowerCase().contains(valor) ||
                                     tel.trim().contains(valor) ||
-                                    email.trim().toLowerCase().contains(valor)){
+                                    presentacion.trim().toLowerCase().contains(valor)){
                                 alAmigos.add(amigo);
                             }
                         }
@@ -239,10 +239,10 @@ public class lista_amigos extends AppCompatActivity {
                     jsonObject.put("_rev", cAmigos.getString(1));
                     jsonObject.put("idAmigo", cAmigos.getString(2));
                     jsonObject.put("nombre", cAmigos.getString(3));
-                    jsonObject.put("direccion", cAmigos.getString(4));
-                    jsonObject.put("telefono", cAmigos.getString(5));
-                    jsonObject.put("email", cAmigos.getString(6));
-                    jsonObject.put("dui", cAmigos.getString(7));
+                    jsonObject.put("descripcion", cAmigos.getString(4));
+                    jsonObject.put("marca", cAmigos.getString(5));
+                    jsonObject.put("presentacion", cAmigos.getString(6));
+                    jsonObject.put("precio", cAmigos.getString(7));
                     jsonObject.put("urlCompletaFoto", cAmigos.getString(8));
                     jsonObjectValue.put("value", jsonObject);
 

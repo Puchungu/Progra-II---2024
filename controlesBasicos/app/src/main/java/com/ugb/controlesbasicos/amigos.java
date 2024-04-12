@@ -5,21 +5,21 @@ public class amigos {
     String _rev;
     String idAmigo;
     String nombre;
-    String direccion;
-    String telefono;
-    String email;
-    String dui;
+    String descripcion;
+    String marca;
+    String presentacion;
+    String precio;
     String urlFotoAmigo;
 
-    public amigos(String _id, String _rev, String idAmigo, String nombre, String direccion, String telefono, String email, String dui, String urlFoto) {
+    public amigos(String _id, String _rev, String idAmigo, String nombre, String descripcion, String marca, String presentacion, String precio, String urlFoto) {
         this._id = _id;
         this._rev = _rev;
         this.idAmigo = idAmigo;
         this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.email = email;
-        this.dui = dui;
+        this.descripcion = descripcion;
+        this.marca = marca;
+        this.presentacion = presentacion;
+        this.precio = precio;
         this.urlFotoAmigo = urlFoto;
     }
     public String get_id() {
@@ -58,35 +58,35 @@ public class amigos {
         this.nombre = nombre;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPresentacion() {
+        return presentacion;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPresentacion(String presentacion) {
+        this.presentacion = presentacion;
     }
 
-    public String getDui() {
-        return dui;
+    public String getPrecio() {
+        return precio;
     }
 
-    public void setDui(String dui) {
-        this.dui = dui;
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
 }
