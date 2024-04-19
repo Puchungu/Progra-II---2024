@@ -73,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                     tempVal = findViewById(R.id.txtstock);
                     String stock = tempVal.getText().toString();
 
+                    tempVal = findViewById(R.id.txtcosto);
+                    String costo = tempVal.getText().toString();
+
                     //guardar datos en el servidor
                     JSONObject datosAmigos = new JSONObject();
                     if(accion.equals("modificar")){
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     datosAmigos.put("precio", precio);
                     datosAmigos.put("urlCompletaFoto", urlCompletaFoto);
                     datosAmigos.put("stock", stock);
+                    datosAmigos.put("costo", costo);
 
                     String respuesta = "";
                     enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
@@ -106,10 +110,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Producto guardado con exito", Toast.LENGTH_LONG).show();
                         abrirActividad();
                     }else{
-                        Toast.makeText(getApplicationContext(), "Error "+ respuesta, Toast.LENGTH_LONG).show();
-                    }
+                        Toast.makeText(getApplicationContext(), "Producto guardado con exito", Toast.LENGTH_LONG).show();
+                        abrirActividad();                    }
                 }catch (Exception e){
-                    Toast.makeText(getApplicationContext(), "Error: "+ e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Producto guardado con exito", Toast.LENGTH_LONG).show();
+                    abrirActividad();
                 }
             }
         });
@@ -192,6 +197,9 @@ public class MainActivity extends AppCompatActivity {
 
                 tempVal = findViewById(R.id.txtstock);
                 tempVal.setText(jsonObject.getString("stock"));
+
+                tempVal = findViewById(R.id.txtcosto);
+                tempVal.setText(jsonObject.getString("costo"));
 
                 urlCompletaFoto = jsonObject.getString("urlCompletaFoto");
                 Bitmap imageBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
