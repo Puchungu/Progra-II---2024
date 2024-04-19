@@ -96,7 +96,8 @@ public class lista_amigos extends AppCompatActivity {
                             misDatosJSONObject.getString("marca"),
                             misDatosJSONObject.getString("presentacion"),
                             misDatosJSONObject.getString("precio"),
-                            misDatosJSONObject.getString("urlCompletaFoto")
+                            misDatosJSONObject.getString("urlCompletaFoto"),
+                            misDatosJSONObject.getString("stock")
                     );
                     alAmigos.add(datosAmigos);
                 }
@@ -244,6 +245,7 @@ public class lista_amigos extends AppCompatActivity {
                     jsonObject.put("presentacion", cAmigos.getString(6));
                     jsonObject.put("precio", cAmigos.getString(7));
                     jsonObject.put("urlCompletaFoto", cAmigos.getString(8));
+                    jsonObject.put("stock", cAmigos.getString(9));
                     jsonObjectValue.put("value", jsonObject);
 
                     datosJSON.put(jsonObjectValue);

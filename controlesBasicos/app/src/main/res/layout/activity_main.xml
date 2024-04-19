@@ -56,9 +56,18 @@
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/txtstock"
+        android:inputType="numberDecimal"
+        android:hint="stock"
+        android:layout_below="@id/txtprecio"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btnGuardarAgendaAmigos"
-        android:layout_below="@id/txtprecio"
+        android:layout_below="@id/txtstock"
         android:layout_marginTop="40dp"
         android:text="GUARDAR PRODUCTO"
         android:layout_width="match_parent"

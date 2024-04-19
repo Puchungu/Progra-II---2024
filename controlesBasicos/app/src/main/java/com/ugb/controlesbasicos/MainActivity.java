@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                     tempVal = findViewById(R.id.txtprecio);
                     String precio = tempVal.getText().toString();
 
+                    tempVal = findViewById(R.id.txtstock);
+                    String stock = tempVal.getText().toString();
+
                     //guardar datos en el servidor
                     JSONObject datosAmigos = new JSONObject();
                     if(accion.equals("modificar")){
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     datosAmigos.put("presentacion", presentacion);
                     datosAmigos.put("precio", precio);
                     datosAmigos.put("urlCompletaFoto", urlCompletaFoto);
+                    datosAmigos.put("stock", stock);
 
                     String respuesta = "";
                     enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
@@ -96,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         mostrarMsg("Error al guardar datos en el servidor");
                     }
                     DB db = new DB(getApplicationContext(), "",null, 1);
-                    String[] datos = new String[]{id, rev, idAmigo,nombre,descripcion,marca,presentacion,precio, urlCompletaFoto};
+                    String[] datos = new String[]{id, rev, idAmigo,nombre,descripcion,marca,presentacion,precio, urlCompletaFoto,stock};
                     respuesta = db.administrar_amigos(accion, datos);
                     if(respuesta.equals("ok")){
                         Toast.makeText(getApplicationContext(), "Producto guardado con exito", Toast.LENGTH_LONG).show();
@@ -185,6 +189,9 @@ public class MainActivity extends AppCompatActivity {
 
                 tempVal = findViewById(R.id.txtprecio);
                 tempVal.setText(jsonObject.getString("precio"));
+
+                tempVal = findViewById(R.id.txtstock);
+                tempVal.setText(jsonObject.getString("stock"));
 
                 urlCompletaFoto = jsonObject.getString("urlCompletaFoto");
                 Bitmap imageBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
