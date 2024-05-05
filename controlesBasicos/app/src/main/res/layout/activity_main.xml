@@ -6,104 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <TextView
-       android:id="@+id/lblnum1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Num 1:"
-       android:layout_marginLeft="20dp"
-       android:layout_marginTop="40dp"/>
 
     <TextView
-        android:id="@+id/lblnum2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtnum1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:text="Num 2:" />
-
-    <EditText
-        android:id="@+id/txtnum1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lblnum1"
-        android:layout_marginTop="-30dp"
-        android:layout_marginLeft="80dp"/>
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#CC000000"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="45dp"
+        android:text="Menu Principal"/>
 
- <EditText
-     android:id="@+id/txtnum2"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:layout_below="@+id/txtnum1"
-     android:layout_marginLeft="80dp"
-     android:layout_marginTop="20dp" />
+    <ImageView
+        android:id="@+id/registerUser"
+        android:layout_width="171dp"
+        android:layout_height="165dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="505dp"
+        android:clickable="true"
+        android:onClick="openRegisterActivity"
+        android:src="@drawable/registeruser"
+        android:visibility="visible" />
 
-    <RadioGroup
-        android:id="@+id/optOpciones"
-        android:layout_below="@+id/txtnum2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/optSuma"
-            android:text="SUMA"
-            android:checked="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optResta"
-            android:text="RESTA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optMulplicacion"
-            android:text="MULTIPLICACION"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optDivision"
-            android:text="DIVISION"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optPorcentaje"
-            android:text="PORCENTAJE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optFactorial"
-            android:text="FACTORIAL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optExponente"
-            android:text="EXPONENTE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optRaiz"
-            android:text="RAIZ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </RadioGroup>
-    <Button
-        android:id="@+id/btnCalcular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/optOpciones"
-        android:layout_marginTop="40dp"
-        android:text="Calcular"/>
+    <ImageView
+        android:id="@+id/addPlace"
+        android:layout_width="171dp"
+        android:layout_height="165dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="504dp"
+        android:clickable="true"
+        android:onClick="openRegisterActivity"
+        android:src="@drawable/agregar"
+        android:visibility="visible" />
 
-    <TextView
-        android:id="@+id/lblrespuesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnCalcular"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="Respuesta: ?" />
+    <ImageView
+        android:id="@+id/showplaces"
+        android:layout_width="171dp"
+        android:layout_height="165dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="169dp"
+        android:layout_marginBottom="319dp"
+        android:clickable="true"
+        android:onClick="openRegisterActivity"
+        android:src="@drawable/show"
+        android:visibility="visible" />
+
 
 
 </RelativeLayout>

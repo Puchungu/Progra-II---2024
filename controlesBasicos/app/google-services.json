@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "597560702135",
+    "firebase_url": "https://turismosv-82e30-default-rtdb.firebaseio.com/",
+    "project_id": "turismosv-82e30",
+    "storage_bucket": "turismosv-82e30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597560702135:android:8c545e9592aa9942e9c932",
+        "android_client_info": {
+          "package_name": "com.ugb.controlesbasicos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgD3Ihp1jkfBVogTG-IBOzov3eULRtIEg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
