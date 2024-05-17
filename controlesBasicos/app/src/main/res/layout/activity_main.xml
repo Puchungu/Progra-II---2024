@@ -18,44 +18,59 @@
 
     <EditText
         android:id="@+id/txtnombre"
-        android:inputType="textPersonName"
-        android:hint="Nombre"
-        android:layout_below="@+id/btnImgAmigo"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="525dp"
+        android:hint="Nombre del lugar"
+        android:inputType="textPersonName" />
+
     <EditText
         android:id="@+id/txtdescripcion"
-        android:hint="descripcion"
-        android:inputType="textMultiLine"
-        android:layout_below="@id/txtnombre"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="460dp"
+        android:hint="descripcion del lugar"
+        android:inputType="textMultiLine" />
+
     <EditText
         android:id="@+id/txtmarca"
-        android:hint="marca"
-        android:inputType="textPersonName"
-        android:layout_below="@id/txtdescripcion"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="405dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="400dp"
+        android:hint="Direccion del lugar"
+        android:inputType="textPersonName" />
+
     <EditText
         android:id="@+id/txtpresentacion"
-        android:hint="presentacion"
-        android:inputType="textMultiLine"
-        android:layout_below="@id/txtmarca"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="235dp"
+        android:layout_marginBottom="310dp"
+        android:hint="telefono"
+        android:inputType="textMultiLine" />
+
     <EditText
         android:id="@+id/txtprecio"
-        android:inputType="numberDecimal"
-        android:hint="precio"
-        android:layout_below="@id/txtpresentacion"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="172dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="309dp"
+        android:hint="precio entrada"
+        android:inputType="numberDecimal" />
+
     <Button
         android:id="@+id/btnGuardarAgendaAmigos"
         android:layout_below="@id/txtprecio"

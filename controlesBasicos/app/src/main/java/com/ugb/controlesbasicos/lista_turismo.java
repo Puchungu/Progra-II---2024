@@ -25,18 +25,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-import kotlin.contracts.Returns;
-
-public class lista_amigos extends AppCompatActivity {
+public class lista_turismo extends AppCompatActivity {
     Bundle paramatros = new Bundle();
     DB db;
     ListView lts;
     Cursor cAmigos;
-    final ArrayList<amigos> alAmigos = new ArrayList<amigos>();
-    final ArrayList<amigos> alAmigosCopy = new ArrayList<amigos>();
-    amigos datosAmigos;
+    final ArrayList<turismo> alAmigos = new ArrayList<turismo>();
+    final ArrayList<turismo> alTurismoCopy = new ArrayList<turismo>();
+    turismo datosTurismo;
     FloatingActionButton btn;
     JSONArray datosJSON; //para los datos que vienen del servidor.
     JSONObject jsonObject;
@@ -82,25 +79,25 @@ public class lista_amigos extends AppCompatActivity {
             if( datosJSON.length()>0 ){
                 lts = findViewById(R.id.ltsAmigos);
                 alAmigos.clear();
-                alAmigosCopy.clear();
+                alTurismoCopy.clear();
 
                 JSONObject misDatosJSONObject;
                 for (int i=0; i<datosJSON.length(); i++){
                     misDatosJSONObject = datosJSON.getJSONObject(i).getJSONObject("value");
-                    datosAmigos = new amigos(
+                    datosTurismo = new turismo(
                             misDatosJSONObject.getString("_id"),
                             misDatosJSONObject.getString("_rev"),
-                            misDatosJSONObject.getString("idAmigo"),
+                            misDatosJSONObject.getString("idLugar"),
                             misDatosJSONObject.getString("nombre"),
                             misDatosJSONObject.getString("descripcion"),
-                            misDatosJSONObject.getString("marca"),
-                            misDatosJSONObject.getString("presentacion"),
+                            misDatosJSONObject.getString("direccion"),
+                            misDatosJSONObject.getString("telefono"),
                             misDatosJSONObject.getString("precio"),
                             misDatosJSONObject.getString("urlCompletaFoto")
                     );
-                    alAmigos.add(datosAmigos);
+                    alAmigos.add(datosTurismo);
                 }
-                alAmigosCopy.addAll(alAmigos);
+                alTurismoCopy.addAll(alAmigos);
 
                 adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alAmigos);
                 lts.setAdapter(adImagenes);
@@ -136,7 +133,7 @@ public class lista_amigos extends AppCompatActivity {
                     break;
                 case R.id.mnxModificar:
                     paramatros.putString("accion", "modificar");
-                    paramatros.putString("amigos", datosJSON.getJSONObject(posicion).toString());
+                    paramatros.putString("turismo", datosJSON.getJSONObject(posicion).toString());
                     abrirActividad(paramatros);
                     break;
                 case R.id.mnxEliminar:
@@ -151,19 +148,19 @@ public class lista_amigos extends AppCompatActivity {
     }
     private void eliminarAmigo(){
         try {
-            AlertDialog.Builder confirmar = new AlertDialog.Builder(lista_amigos.this);
-            confirmar.setTitle("Esta seguro de eliinar a: ");
+            AlertDialog.Builder confirmar = new AlertDialog.Builder(lista_turismo.this);
+            confirmar.setTitle("Esta seguro de eliminar a: ");
             confirmar.setMessage(datosJSON.getJSONObject(posicion).getJSONObject("value").getString("nombre"));
             confirmar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     try {
-                        String respuesta = db.administrar_amigos("eliminar", new String[]{"", "", datosJSON.getJSONObject(posicion).getJSONObject("value").getString("idAmigo")});
+                        String respuesta = db.administrar_amigos("eliminar", new String[]{"", "", datosJSON.getJSONObject(posicion).getJSONObject("value").getString("idLugar")});
                         if (respuesta.equals("ok")) {
-                            mostrarMsg("Producto eliminado con exito");
+                            mostrarMsg("Lugar eliminado con exito");
                             obtenerAmigos();
                         } else {
-                            mostrarMsg("Error al eliminar el producto: " + respuesta);
+                            mostrarMsg("Error al eliminar el Lugar: " + respuesta);
                         }
                     }catch (Exception e){
                         mostrarMsg("Error al eliminar datos: "+ e.getMessage());
@@ -194,17 +191,17 @@ public class lista_amigos extends AppCompatActivity {
                     alAmigos.clear();
                     String valor = tempVal.getText().toString().trim().toLowerCase();
                     if( valor.length()<=0 ){
-                        alAmigos.addAll(alAmigosCopy);
+                        alAmigos.addAll(alTurismoCopy);
                     }else{
-                        for (amigos amigo : alAmigosCopy){
+                        for (turismo amigo : alTurismoCopy){
                             String nombre = amigo.getNombre();
                             String descripcion = amigo.getDescripcion();
-                            String tel = amigo.getMarca();
-                            String presentacion = amigo.getPresentacion();
+                            String tel = amigo.getDireccion();
+                            String telefono = amigo.getTelefono();
                             if( nombre.trim().toLowerCase().contains(valor) ||
                                     descripcion.trim().toLowerCase().contains(valor) ||
                                     tel.trim().contains(valor) ||
-                                    presentacion.trim().toLowerCase().contains(valor)){
+                                    telefono.trim().toLowerCase().contains(valor)){
                                 alAmigos.add(amigo);
                             }
                         }
@@ -237,26 +234,25 @@ public class lista_amigos extends AppCompatActivity {
 
                     jsonObject.put("_id", cAmigos.getString(0));
                     jsonObject.put("_rev", cAmigos.getString(1));
-                    jsonObject.put("idAmigo", cAmigos.getString(2));
+                    jsonObject.put("idLugar", cAmigos.getString(2));
                     jsonObject.put("nombre", cAmigos.getString(3));
                     jsonObject.put("descripcion", cAmigos.getString(4));
-                    jsonObject.put("marca", cAmigos.getString(5));
-                    jsonObject.put("presentacion", cAmigos.getString(6));
+                    jsonObject.put("direccion", cAmigos.getString(5));
+                    jsonObject.put("telefono", cAmigos.getString(6));
                     jsonObject.put("precio", cAmigos.getString(7));
                     jsonObject.put("urlCompletaFoto", cAmigos.getString(8));
                     jsonObjectValue.put("value", jsonObject);
 
                     datosJSON.put(jsonObjectValue);
                 }while (cAmigos.moveToNext());
-                mostrarMsg("Punto");
                 mostrarDatosAmigos();
             }else {
                 paramatros.putString("accion", "nuevo");
                 abrirActividad(paramatros);
-                mostrarMsg("No hay Datos de amigos.");
+                mostrarMsg("No hay Datos de turismo.");
             }
         }catch (Exception e){
-            mostrarMsg("Error al obtener los productos : "+ e.getMessage());
+            mostrarMsg("Error al obtener los lugares : "+ e.getMessage());
         }
     }
     private void mostrarMsg(String msg){

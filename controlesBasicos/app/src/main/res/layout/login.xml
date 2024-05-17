@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity">
+
+
+    <TextView
+        android:id="@+id/txtTextview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido a TurismoSV, por favor inicie sesión o registrese."
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-black"
+
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@id/txtTextview2"
+        android:layout_marginTop="60dp">
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Usuario"
+            android:inputType="textShortMessage"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:layout_marginTop="50dp"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar sesión"
+            android:textSize="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_below="@id/password"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:layout_marginStart="5dp"/>
+
+        <Button
+            android:id="@+id/regist_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:textSize="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_below="@id/password"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:layout_gravity="end"/>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</RelativeLayout>

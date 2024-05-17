@@ -1,24 +1,24 @@
 package com.ugb.controlesbasicos;
 
-public class amigos {
+public class turismo {
     String _id;
     String _rev;
-    String idAmigo;
+    String idLugar;
     String nombre;
     String descripcion;
-    String marca;
-    String presentacion;
+    String direccion;
+    String telefono;
     String precio;
     String urlFotoAmigo;
 
-    public amigos(String _id, String _rev, String idAmigo, String nombre, String descripcion, String marca, String presentacion, String precio, String urlFoto) {
+    public turismo(String _id, String _rev, String idLugar, String nombre, String descripcion, String direccion, String telefono, String precio, String urlFoto) {
         this._id = _id;
         this._rev = _rev;
-        this.idAmigo = idAmigo;
+        this.idLugar = idLugar;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.marca = marca;
-        this.presentacion = presentacion;
+        this.direccion = direccion;
+        this.telefono = telefono;
         this.precio = precio;
         this.urlFotoAmigo = urlFoto;
     }
@@ -42,12 +42,12 @@ public class amigos {
         this.urlFotoAmigo = urlFotoAmigo;
     }
 
-    public String getIdAmigo() {
-        return idAmigo;
+    public String getIdLugar() {
+        return idLugar;
     }
 
-    public void setIdAmigo(String idAmigo) {
-        this.idAmigo = idAmigo;
+    public void setIdLugar(String idLugar) {
+        this.idLugar = idLugar;
     }
 
     public String getNombre() {
@@ -66,20 +66,20 @@ public class amigos {
         this.descripcion = descripcion;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getPresentacion() {
-        return presentacion;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setPresentacion(String presentacion) {
-        this.presentacion = presentacion;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getPrecio() {

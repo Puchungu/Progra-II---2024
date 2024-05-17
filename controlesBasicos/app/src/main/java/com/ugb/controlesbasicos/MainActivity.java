@@ -14,8 +14,6 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     TextView tempVal;
     String accion = "nuevo";
-    String id="", rev="", idAmigo="";
+    String id="", rev="", idLugar="";
     String urlCompletaFoto;
     Intent tomarFotoIntent;
     ImageView img;
@@ -62,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
                     String descripcion = tempVal.getText().toString();
 
                     tempVal = findViewById(R.id.txtmarca);
-                    String marca = tempVal.getText().toString();
+                    String direccion = tempVal.getText().toString();
 
                     tempVal = findViewById(R.id.txtpresentacion);
-                    String presentacion = tempVal.getText().toString();
+                    String telefono = tempVal.getText().toString();
 
                     tempVal = findViewById(R.id.txtprecio);
                     String precio = tempVal.getText().toString();
@@ -76,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
                         datosAmigos.put("_id", id);
                         datosAmigos.put("_rev", rev);
                     }
-                    datosAmigos.put("idAmigo", idAmigo);
+                    datosAmigos.put("idLugar", idLugar);
                     datosAmigos.put("nombre", nombre);
                     datosAmigos.put("descripcion", descripcion);
-                    datosAmigos.put("marca", marca);
-                    datosAmigos.put("presentacion", presentacion);
+                    datosAmigos.put("direccion", direccion);
+                    datosAmigos.put("telefono", telefono);
                     datosAmigos.put("precio", precio);
                     datosAmigos.put("urlCompletaFoto", urlCompletaFoto);
 
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         mostrarMsg("Error al guardar datos en el servidor");
                     }
                     DB db = new DB(getApplicationContext(), "",null, 1);
-                    String[] datos = new String[]{id, rev, idAmigo,nombre,descripcion,marca,presentacion,precio, urlCompletaFoto};
+                    String[] datos = new String[]{id, rev, idLugar,nombre,descripcion,direccion,telefono,precio, urlCompletaFoto};
                     respuesta = db.administrar_amigos(accion, datos);
                     if(respuesta.equals("ok")){
                         Toast.makeText(getApplicationContext(), "Producto guardado con exito", Toast.LENGTH_LONG).show();
@@ -146,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 mostrarMsg("El usuario cancelo la toma de la foto");
             }
         }catch (Exception e){
-            mostrarMsg("Error añ obtener la foto de la camara");
+            mostrarMsg("Error al obtener la foto de la camara");
         }
     }
     private File crearImagenAmigo() throws Exception{
@@ -166,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
             accion = parametros.getString("accion");
 
             if(accion.equals("modificar")){
-                JSONObject jsonObject = new JSONObject(parametros.getString("amigos")).getJSONObject("value");
+                JSONObject jsonObject = new JSONObject(parametros.getString("turismo")).getJSONObject("value");
                 id = jsonObject.getString("_id");
                 rev = jsonObject.getString("_rev");
-                idAmigo = jsonObject.getString("idAmigo");
+                idLugar = jsonObject.getString("idLugar");
 
                 tempVal = findViewById(R.id.txtnombre);
                 tempVal.setText(jsonObject.getString("nombre"));
@@ -178,10 +176,10 @@ public class MainActivity extends AppCompatActivity {
                 tempVal.setText(jsonObject.getString("descripcion"));
 
                 tempVal = findViewById(R.id.txtmarca);
-                tempVal.setText(jsonObject.getString("marca"));
+                tempVal.setText(jsonObject.getString("direccion"));
 
                 tempVal = findViewById(R.id.txtpresentacion);
-                tempVal.setText(jsonObject.getString("presentacion"));
+                tempVal.setText(jsonObject.getString("telefono"));
 
                 tempVal = findViewById(R.id.txtprecio);
                 tempVal.setText(jsonObject.getString("precio"));
@@ -190,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap imageBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
                 img.setImageBitmap(imageBitmap);
             }else{//nuevo registro
-                idAmigo = utls.generarIdUnico();
+                idLugar = utls.generarIdUnico();
             }
         }catch (Exception e){
             mostrarMsg("Error al mostrar datos: "+ e.getMessage());
@@ -200,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
     private void abrirActividad(){
-        Intent abrirActividad = new Intent(getApplicationContext(), lista_amigos.class);
+        Intent abrirActividad = new Intent(getApplicationContext(), lista_turismo.class);
         startActivity(abrirActividad);
     }
 }

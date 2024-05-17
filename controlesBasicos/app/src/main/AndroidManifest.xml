@@ -16,9 +16,9 @@
         android:theme="@style/Theme.ControlesBasicos"
         tools:targetApi="31">
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".lista_amigos"></activity>
+        <activity android:name=".lista_turismo"></activity>
         <activity
-            android:name=".paginaprincipal"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
