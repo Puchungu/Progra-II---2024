@@ -51,11 +51,11 @@
 
     <EditText
         android:id="@+id/txtpresentacion"
-        android:layout_width="171dp"
+        android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="235dp"
+        android:layout_marginEnd="230dp"
         android:layout_marginBottom="310dp"
         android:hint="telefono"
         android:inputType="textMultiLine" />
