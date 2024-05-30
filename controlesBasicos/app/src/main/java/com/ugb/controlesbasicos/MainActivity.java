@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                abrirActividad();
+                Intent abrirActividad = new Intent(getApplicationContext(), principal.class);
+                startActivity(abrirActividad);
             }
         });
         btn = findViewById(R.id.btnGuardarAgendaAmigos);

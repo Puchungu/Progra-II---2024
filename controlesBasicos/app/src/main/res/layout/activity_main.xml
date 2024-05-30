@@ -73,11 +73,13 @@
 
     <Button
         android:id="@+id/btnGuardarAgendaAmigos"
-        android:layout_below="@id/txtprecio"
-        android:layout_marginTop="40dp"
-        android:text="GUARDAR PRODUCTO"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="239dp"
+        android:text="GUARDAR PRODUCTO" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabListarAmigos"
         android:layout_width="wrap_content"

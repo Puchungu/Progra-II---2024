@@ -52,17 +52,7 @@
             android:textColor="@color/white"
             android:layout_marginStart="5dp"/>
 
-        <Button
-            android:id="@+id/regist_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrarse"
-            android:textSize="20dp"
-            android:layout_marginTop="100dp"
-            android:layout_below="@id/password"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"
-            android:layout_gravity="end"/>
+
 
 
 

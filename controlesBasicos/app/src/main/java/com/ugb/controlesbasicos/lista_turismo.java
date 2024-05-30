@@ -254,6 +254,16 @@ public class lista_turismo extends AppCompatActivity {
         }catch (Exception e){
             mostrarMsg("Error al obtener los lugares : "+ e.getMessage());
         }
+
+        btn = findViewById(R.id.fabPrincipal);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirActividad = new Intent(getApplicationContext(), principal.class);
+                startActivity(abrirActividad);
+            }
+        });
+
     }
     private void mostrarMsg(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();

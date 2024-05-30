@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString().trim();
 
                 if (db.checkUser(username, password)) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, principal.class);
                     startActivity(intent);
                     finish();
                 } else {
