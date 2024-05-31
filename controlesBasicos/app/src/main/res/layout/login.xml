@@ -15,9 +15,7 @@
         android:fontFamily="sans-serif-black"
         android:text="Bienvenido a TurismoSV, por favor inicie sesión o registrese."
         android:textAlignment="center"
-        android:textSize="25dp"
-
-        />
+        android:textSize="25dp" />
 
 
     <androidx.cardview.widget.CardView

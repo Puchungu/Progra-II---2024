@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/esa">
 
     <ImageButton
         android:id="@+id/publicarbtn"
@@ -10,49 +11,53 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="313dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="314dp"
         android:src="@drawable/add" />
 
-    <Button
+    <ImageButton
         android:id="@+id/verbtn"
-        android:layout_width="132dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="369dp"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginBottom="325dp"
+        android:src="@drawable/see"
         android:text="Ver lugares" />
 
-    <Button
+    <ImageButton
         android:id="@+id/closebtn"
-        android:layout_width="132dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="514dp"
+        android:layout_marginEnd="-9dp"
+        android:layout_marginBottom="478dp"
+        android:src="@drawable/close"
         android:text="Cerrar Sesion" />
 
-    <Button
+    <ImageButton
         android:id="@+id/chatbtn"
-        android:layout_width="132dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="252dp"
-        android:layout_marginBottom="515dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="484dp"
+        android:src="@drawable/chat"
         android:text="Chat general" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="175dp"
-        android:layout_height="81dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="134dp"
-        android:layout_marginBottom="619dp"
-        android:text="Pagina Principal"
-        android:textSize="24sp" />
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="661dp"
+        android:text="TurismoSV"
+        android:textColor="@color/black"
+        android:textSize="50dp" />
 
 </RelativeLayout>

@@ -219,7 +219,7 @@ public class lista_turismo extends AppCompatActivity {
         });
     }
     private void abrirActividad(Bundle parametros){
-        Intent abrirActividad = new Intent(getApplicationContext(), MainActivity.class);
+        Intent abrirActividad = new Intent(getApplicationContext(), principal.class);
         abrirActividad.putExtras(parametros);
         startActivity(abrirActividad);
     }
