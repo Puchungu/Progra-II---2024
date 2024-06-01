@@ -78,7 +78,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="239dp"
-        android:text="GUARDAR PRODUCTO" />
+        android:text="GUARDAR Lugar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabListarAmigos"

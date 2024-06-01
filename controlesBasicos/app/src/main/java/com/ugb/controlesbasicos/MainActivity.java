@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     String[] datos = new String[]{id, rev, idLugar,nombre,descripcion,direccion,telefono,precio, urlCompletaFoto};
                     respuesta = db.administrar_amigos(accion, datos);
                     if(respuesta.equals("ok")){
-                        Toast.makeText(getApplicationContext(), "Producto guardado con exito", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Lugar guardado con exito", Toast.LENGTH_LONG).show();
                         abrirActividad();
                     }else{
                         Toast.makeText(getApplicationContext(), "Error "+ respuesta, Toast.LENGTH_LONG).show();
